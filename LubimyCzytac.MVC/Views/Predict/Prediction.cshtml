@@ -1,0 +1,22 @@
+﻿@using LubimyCzytac
+
+@if(ViewBag.Prediction!=null)
+{
+    var output = (LubimyCzytacModel.ModelOutput)ViewBag.Prediction;
+    
+    <p>Book Id:
+    @Html.DisplayTextFor(x=>output.BookId)
+    </p>
+    <p>Date:
+    @Html.DisplayTextFor(x=>output.Date)
+    </p>
+    <p>Rating Value:
+    @Html.DisplayTextFor(x=>output.RatingValue)
+    </p>
+    <p>Score:
+    @Html.DisplayTextFor(x=>output.Score)
+    </p>
+    <p>User Id:
+    @Html.DisplayTextFor(x=>output.UserId)
+    </p>
+}

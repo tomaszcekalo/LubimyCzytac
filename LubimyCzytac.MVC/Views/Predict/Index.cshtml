@@ -1,0 +1,31 @@
+﻿@using LubimyCzytac
+@using LubimyCzytac.MVC.Controllers
+@model PredictModel
+
+@using (Html.BeginForm("Predict", "Predict", FormMethod.Post)) {
+
+    <fieldset>
+            @*Book*@
+            @*<label for="exampleDataList" class="form-label">Datalist example</label>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">*@
+        <div class="mb-3">
+            <label for="BookId" class="form-label">BookId</label>
+            @Html.DropDownListFor(model=>model.BookId, (IEnumerable<SelectListItem>)ViewBag.Books, 
+            new 
+            { 
+                @id="datalistOptions", 
+                @class="selectpicker", 
+                data_live_search="true" 
+            })
+        </div>
+
+        <div class="mb-3">   
+            <label for="UserId" class="form-label">UserId</label>
+            @Html.TextBoxFor(model=>model.UserId, "",new {@class="form-control"})
+            
+        </div>
+        <p>
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </p>
+    </fieldset>
+}

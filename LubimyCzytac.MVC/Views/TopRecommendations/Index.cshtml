@@ -1,0 +1,24 @@
+﻿@using LubimyCzytac
+@using LubimyCzytac.MVC.Controllers
+@model RecommendationRequestModel
+
+@using (Html.BeginForm("ForUser", "TopRecommendations", FormMethod.Post)) {
+
+    <fieldset>
+         
+        <div class="mb-3">   
+            <label for="UserId" class="form-label">User Id</label>
+            @Html.TextBoxFor(model=>model.UserId, "",new {@class="form-control"})
+            
+        </div>
+
+        <div class="mb-3">   
+            <label for="Amount" class="form-label">Amount of recommendations</label>
+            @Html.TextBoxFor(model=>model.Amount, "",new {@class="form-control"})
+            
+        </div>
+        <p>
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </p>
+    </fieldset>
+}

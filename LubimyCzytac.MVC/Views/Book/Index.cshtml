@@ -1,0 +1,46 @@
+﻿@using LubimyCzytac.Model
+@using LubimyCzytac.Core
+@model List<Book>
+
+    @using (Html.BeginForm("Index", "Book", FormMethod.Get)) 
+    {
+        <fieldset>
+            <div class="mb-3">
+                <label for="q" class="form-label">search</label>
+                <input id="q" name="q" class="form-control" type="text" />
+            </div>
+            <p>
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            </p>
+        </fieldset>
+    }
+
+<table class="table">
+	  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+    <tbody>
+        @foreach(var row in Model)
+        {
+            <tr>
+                <th scope="row">
+                    <a class="nav-link text-dark" 
+                    asp-area="" 
+                    asp-controller="Book" 
+                    asp-route-bookId="@row.Id"
+                    asp-action="Reviews">
+                        @row.Id
+                    </a>
+                </th>
+                <td>
+                    <a target="_blank" href=@(Consts.LubimyCzytacBaseUrl + row.Url)>
+                        @row.Name
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

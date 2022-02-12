@@ -1,0 +1,43 @@
+﻿@using LubimyCzytac.Core
+@using LubimyCzytac.Model
+@model List<Review>
+
+User with id @(ViewContext.HttpContext.Request.Query["userId"]) reviewed these books:
+
+<table class="table">
+	  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Rating Value</th>
+      <th scope="col">Date</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+    <tbody>
+        @foreach(var row in Model)
+        {
+            <tr>
+                <th scope="row">
+                    <a class="nav-link text-dark" 
+                    asp-area="" 
+                    asp-controller="Book" 
+                    asp-route-bookId="@row.BookId"
+                    asp-action="Reviews">
+                        @row.BookId
+                    </a>
+                </th>
+                <td>
+                    @row.RatingValue
+                </td>
+                <td>
+                    @row.Date
+                </td>
+                <td>
+                    <a target="_blank" href=@(Consts.LubimyCzytacBaseUrl + row.Book.Url)>
+                    @row.Book.Name
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

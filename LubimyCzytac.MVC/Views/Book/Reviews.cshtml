@@ -1,0 +1,36 @@
+﻿@using LubimyCzytac.Model
+@model List<Review>
+
+Book with id @(ViewContext.HttpContext.Request.Query["bookId"]) was reviewed by these users:
+<table class="table">
+	  <thead>
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">Rating Value</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+    <tbody>
+        @foreach(var row in Model)
+        {
+            <tr>
+                <th scope="row">
+                    <a class="nav-link text-dark" 
+                    asp-area="" 
+                    asp-controller="User" 
+                    asp-route-userId="@row.UserId"
+                    asp-action="Reviews">
+                        @row.UserId
+                    </a>
+                </th>
+                
+                <td>
+                    @row.RatingValue
+                </td>
+                <td>
+                    @row.Date.ToShortDateString()
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

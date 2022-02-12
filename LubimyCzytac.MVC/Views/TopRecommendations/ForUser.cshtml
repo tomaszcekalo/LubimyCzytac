@@ -1,0 +1,35 @@
+﻿@using LubimyCzytac.Core
+
+@model IEnumerable<Recommendation>
+
+<table class="table">
+	  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Score</th>
+      <th scope="col">Image/Url</th>
+    </tr>
+  </thead>
+    <tbody>
+        @foreach(var row in Model)
+        {
+            <tr>
+                <th scope="row">@row.Id</th>
+                <td>
+                    @row.Name
+                </td>
+                <td>
+                    @row.Score
+                </td>
+                <td>
+                    <a href=@(Consts.LubimyCzytacBaseUrl + row.Url)>
+                        <img src=@(row.Image) />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
