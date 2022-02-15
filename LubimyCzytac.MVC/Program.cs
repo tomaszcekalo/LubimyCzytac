@@ -1,6 +1,5 @@
 using LubimyCzytac;
 using LubimyCzytac.Model;
-using LubimyCzytac.MsSQL;
 using LubimyCzytac.MVC.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.ML;
@@ -10,8 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DatabaseContext, MsSQLDatabaseContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddPredictionEnginePool<LubimyCzytacModel.ModelInput, LubimyCzytacModel.ModelOutput>()
     .FromFile("LubimyCzytacModel.zip");
 builder.Services.AddSingleton<IBooksRepository, BooksCsvRepository>();
